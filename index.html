@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Favicon Website | Tim Wehrle</title>
+    <link rel="icon" href="/favicon-site.png" />
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <noscript>This site needs JavaScript to decode itself.</noscript>
+    <main id="app">
+      <h1>Favicon Website</h1>
+      <p>
+        This demo stores HTML inside a favicon PNG, reads the pixels back with
+        canvas, decodes the bytes, and renders the result.
+      </p>
+      <section>
+        <h2>Controls</h2>
+        <button id="generate" type="button">Generate favicon</button>
+        <button id="decode" type="button">Decode favicon</button>
+        <button id="render" type="button">Render website</button>
+      </section>
+      <section>
+        <h2>Stats</h2>
+        <dl>
+          <dt>Payload</dt>
+          <dd id="stat-payload">—</dd>
+
+          <dt>Image size</dt>
+          <dd id="stat-size">—</dd>
+
+          <dt>Capacity</dt>
+          <dd id="stat-capacity">—</dd>
+
+          <dt>Encoding</dt>
+          <dd>RGB bytes + 4-byte length header</dd>
+        </dl>
+      </section>
+      <section>
+        <h2>Preview</h2>
+        <img
+          id="favicon-preview"
+          src="/favicon-site.png"
+          alt="Generated favicon"
+          width="128"
+          height="128"
+        />
+      </section>
+      <section>
+        <h2>Decoded HTML</h2>
+        <pre id="output">Nothing decoded yet.</pre>
+      </section>
+    </main>
+  </body>
+</html>

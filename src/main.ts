@@ -28,6 +28,8 @@ const previewEl = document.querySelector<HTMLImageElement>("#favicon-preview");
 const statPayloadEl = document.querySelector<HTMLElement>("#stat-payload");
 const statSizeEl = document.querySelector<HTMLElement>("#stat-size");
 const statCapacityEl = document.querySelector<HTMLElement>("#stat-capacity");
+const statUsedEl = document.querySelector<HTMLElement>("#stat-used");
+const statRemainingEl = document.querySelector<HTMLElement>("#stat-remaining");
 
 function setText(element: HTMLElement | null, value: string): void {
   if (element) {
@@ -87,10 +89,14 @@ function updateStats(
   height: number,
 ): void {
   const capacity = width * height * CHANNELS_PER_PIXEL - 4;
+  const remaining = capacity - payloadBytes;
+  const usedPercentage = capacity > 0 ? (payloadBytes / capacity) * 100 : 0;
 
   setText(statPayloadEl, `${payloadBytes} bytes`);
   setText(statSizeEl, `${width} × ${height}px`);
   setText(statCapacityEl, `${capacity} bytes`);
+  setText(statUsedEl, `${usedPercentage.toFixed(1)}%`);
+  setText(statRemainingEl, `${remaining} bytes`);
 }
 
 function downloadCanvas(canvas: HTMLCanvasElement): void {
